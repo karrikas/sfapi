@@ -1,0 +1,74 @@
+
+easy_admin:
+    site_name: 'Students'
+    design:
+        brand_color: '#D2973B'
+    formats:
+        date:     'Y/m/d'
+        time:     'H:i'
+        datetime: 'Y/m/d H:i:s'
+
+    entities:
+        Alumnos:
+            class: App\Entity\User
+            list:
+                fields: 
+                    - {property: 'username', label: 'Usuario'}
+                    - {property: 'email', label: 'Email'}
+                    - {property: 'grades', label: 'Cursos'}
+                    - {property: 'isActive', label: 'Activo'}
+                sort: ['username', 'ASC']
+                dql_filter: "entity.roles = 'ROLE_STUDENT' AND entity.isActive = 1"
+            form:
+                fields: 
+                    - {property: 'username', label: 'Nombre'}
+                    - {property: 'grades', label: 'Cursos'}
+                    - {property: 'isActive', label: 'Activo'}
+        Curso:
+            class: App\Entity\Grade
+            list:
+                fields: 
+                    - {property: 'name', label: 'Nombre'}
+                    - {property: 'isActive', label: 'Activo'}
+            form:
+                fields: 
+                    - {property: 'name', label: 'Nombre'}
+                    - {property: 'isActive', label: 'Activo'}
+        Alumnosantiguos:
+            class: App\Entity\User
+            list:
+                fields: 
+                    - {property: 'username', label: 'Usuario'}
+                    - {property: 'email', label: 'Email'}
+                sort: ['username', 'ASC']
+                dql_filter: "entity.roles = 'ROLE_STUDENT' AND entity.isActive = 0"
+            form:
+                fields: 
+                    - {property: 'username', label: 'Nombre'}
+                    - {property: 'isActive', label: 'Activo'}
+        Editores:
+            class: App\Entity\User
+            list:
+                fields: 
+                    - {property: 'username', label: 'Usuario'}
+                    - {property: 'email', label: 'Email'}
+                    - {property: 'isActive', label: 'Activo'}
+                sort: ['username', 'ASC']
+                dql_filter: "entity.roles = 'ROLE_EDITOR'"
+            form:
+                fields: 
+                    - {property: 'username', label: 'Nombre'}
+                    - {property: 'isActive', label: 'Activo'}
+        Administradores:
+            class: App\Entity\User
+            list:
+                fields: 
+                    - {property: 'username', label: 'Usuario'}
+                    - {property: 'email', label: 'Email'}
+                    - {property: 'isActive', label: 'Activo'}
+                sort: ['username', 'ASC']
+                dql_filter: "entity.roles = 'ROLE_ADMIN'"
+            form:
+                fields: 
+                    - {property: 'username', label: 'Nombre'}
+                    - {property: 'isActive', label: 'Activo'}
